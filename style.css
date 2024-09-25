@@ -23,6 +23,8 @@ body{
 
 #box {
     position: relative;
+    width: 100%;
+    height: 200px;
 }
 
 #guitar{
@@ -45,7 +47,11 @@ body{
     opacity: 0;
 }
 
-#box{
-    width: 100%;
-    height: 200px;
+#pick{
+    position: fixed;
+    scale: 0;
+}
+
+#main{
+    padding: 200px 0;
 }

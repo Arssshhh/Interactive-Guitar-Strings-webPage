@@ -15,22 +15,25 @@ var touchArea = document.querySelector("#event")
 
 var touched = false
 
-    gsap.to("#line1",{
-        attr:{d: finalPath1},
-        duration: 0.4,
-    })
-    gsap.to("#line2",{
-        attr:{d: finalPath2},
-        duration: 0.3,
-    })
-    gsap.to("#line3",{
-        attr:{d: finalPath3},
-        duration: 0.3,
-    })
-    gsap.to("#hole",{
-        opacity:1,
-        duration:1
-    })
+var main = document.querySelector("#main")
+var pick = document.querySelector("#pick")
+
+gsap.to("#line1",{
+    attr:{d: finalPath1},
+    duration: 0.4,
+})
+gsap.to("#line2",{
+    attr:{d: finalPath2},
+    duration: 0.3,
+})
+gsap.to("#line3",{
+    attr:{d: finalPath3},
+    duration: 0.3,
+})
+gsap.to("#hole",{
+    opacity:1,
+    duration:1
+})
 
 touchArea.addEventListener("mouseenter", function(){
     touched = true
@@ -74,4 +77,35 @@ guitar.addEventListener("mousemove", function(dets){
 
     })
     }
+})
+
+main.addEventListener("mousemove", function(dets){
+    if(dets.movementY>0){
+    gsap.to(pick,{
+        x:dets.x,
+        y:dets.y,
+        ease: "back.out(4)",
+        rotate:45
+    })}
+    else{
+        gsap.to(pick,{
+            x:dets.x,
+            y:dets.y,
+            ease: "back.out(4)",
+            rotate:125
+        })
+    }
+    console.log(dets)
+})
+
+main.addEventListener("mouseenter", function(){
+    gsap.to(pick,{
+        scale:1,
+    })
+})
+
+main.addEventListener("mouseleave", function(){
+    gsap.to(pick,{
+        scale:0,
+    })
 })
